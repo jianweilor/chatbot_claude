@@ -70,11 +70,11 @@ html, body, [class*="css"] {
     border: 1px solid rgba(124,92,255,0.25);
 }
 .evfc-hero img {
-    width: 56px; height: 56px;
+    width: 120px; height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid rgba(124,92,255,0.55);
-    box-shadow: 0 0 0 4px rgba(124,92,255,0.12);
+    border: 3px solid rgba(124,92,255,0.55);
+    box-shadow: 0 0 0 6px rgba(124,92,255,0.12);
     flex-shrink: 0;
 }
 .evfc-hero-text h1 {
