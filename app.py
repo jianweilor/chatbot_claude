@@ -115,7 +115,7 @@ def step3_greeting() -> str:
 
 def render_sidebar() -> None:
     with st.sidebar:
-        st.image(MASCOT_PATH, width=1024)
+        st.image(MASCOT_SIDEBAR_PATH, width=1024)
         st.markdown("**MarIO**")
         st.markdown("<div style='height:0.4rem'></div>", unsafe_allow_html=True)
 
