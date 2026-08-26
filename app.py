@@ -95,10 +95,9 @@ def step1_greeting() -> str:
 
 def step2_greeting() -> str:
     return (
-        "What vehicle(s) are you looking for? You can search by brand/model "
-        "(e.g. *'BYD Seal'*, *'Tesla Model Y'*), or describe what you need "
-        "(e.g. *'SUV with at least 7 seats'*, *'sedans that do 0-100 in under "
-        "8 seconds'*)."
+        "What is your requirement for your car? "
+        "or you can describe your needs (e.g. *'SUV with at least 7 seats'*, *'sedans that do 0-100 in under 8 seconds'.*"
+        "We will call on our agent to assist you  "
     )
 
 
