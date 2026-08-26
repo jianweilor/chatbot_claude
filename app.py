@@ -29,7 +29,7 @@ from utils import claude_assistant, config, csv_tools, electricity, pipeline_run
 MASCOT_CHATBOT_PATH = str(Path(__file__).parent / "assets" / "mascot_chatbot.jpg")
 MASCOT_SIDEBAR_PATH = str(Path(__file__).parent / "assets" / "mascot_sidebar.jpg")
 
-st.set_page_config(page_title="EV Fleet Cost Assistant", page_icon=MASCOT_CHATBOT_PATH, layout="centered")
+st.set_page_config(page_title="MarIO", page_icon=MASCOT_CHATBOT_PATH, layout="centered")
 
 YES_WORDS = {"yes", "y", "yeah", "yep", "sure", "refresh", "go ahead", "do it"}
 NO_WORDS = {"no", "n", "nope", "nah", "skip", "no thanks"}
@@ -85,11 +85,11 @@ def user_say(text: str) -> None:
 
 def step1_greeting() -> str:
     return (
-        "👋 Hi, I'm your EV Fleet Cost Assistant.\n\n"
+        "👋 Hi, I'm MarIO, your Market Intelligent Orchestrator.\n\n"
         "Would you like me to scrape fresh EV listing data from SGCarmart before "
         "we continue? This runs the full pipeline (URL collection → spec scraping "
         "→ pricing scraping → combine into one CSV) and can take a while.\n\n"
-        "Reply **yes** to refresh, or **no** to use the existing data."
+        "Reply **Yes** to refresh, or **No** to use the existing data."
     )
 
 
@@ -105,7 +105,7 @@ def step2_greeting() -> str:
 def step3_greeting() -> str:
     return (
         "Would you like a summary with capital and recurrent cost estimates for "
-        "the vehicle(s) you just looked up, for your market survey? (**yes**/**no**)"
+        "the vehicle(s) you just looked up, for your market survey? (**Yes**/**No**)"
     )
 
 
@@ -115,12 +115,8 @@ def step3_greeting() -> str:
 
 def render_sidebar() -> None:
     with st.sidebar:
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            st.image(MASCOT_SIDEBAR_PATH, width=64)
-        with col2:
-            st.markdown("**EV Fleet Cost**\n\nAssistant")
-
+        st.image(MASCOT_PATH, width=2048)
+        st.markdown("**MarIO**")
         st.markdown("<div style='height:0.4rem'></div>", unsafe_allow_html=True)
 
         with st.container(border=True):
@@ -201,7 +197,7 @@ def render_upload_fallback() -> None:
         st.caption(
             "Live scraping (Selenium/Chrome) isn't available in this environment — "
             "expected on Streamlit Community Cloud. Upload a `sgcarmart_ev_combined.csv` "
-            "from a local run instead, or just reply **no** below to use the existing data."
+            "from a local run instead, or just reply **No** below to use the existing data."
         )
         uploaded = st.file_uploader(
             "Upload sgcarmart_ev_combined.csv", type=["csv"], key="csv_uploader",
@@ -240,7 +236,7 @@ def advance_to_step2() -> str:
     if not config.COMBINED_CSV_PATH.exists():
         return (
             "No `sgcarmart_ev_combined.csv` found yet — scraping is required at "
-            "least once before vehicle lookup can work. Reply **yes** to refresh, "
+            "least once before vehicle lookup can work. Reply **Yes** to refresh, "
             "or upload a CSV above."
         )
     st.session_state.vehicle_df = csv_tools.load_vehicle_df()
@@ -257,8 +253,8 @@ def handle_step1(prompt: str) -> str:
     if t in RETRY_WORDS:
         return run_refresh_pipeline_chat()
     return (
-        "Sorry, I didn't catch that — reply **yes** to refresh the data, or "
-        "**no** to use what's already loaded."
+        "Sorry, I didn't catch that — reply **Yes** to refresh the data, or "
+        "**No** to use what's already loaded."
     )
 
 
@@ -551,7 +547,7 @@ def handle_step3(prompt: str) -> str:
     if t in YES_WORDS:
         st.session_state.step3_confirmed = True
         return "Great — fill in the details below and hit **Generate workbook** when you're ready."
-    return "Reply **yes** to build the cost workbook, or **no** if that's all for now."
+    return "Reply **Yes** to build the cost workbook, or **No** if that's all for now."
 
 
 def render_step3_form() -> None:
@@ -784,7 +780,7 @@ def main() -> None:
     init_state()
     ui_theme.inject_global_css()
     ui_theme.render_hero(
-        "EV Fleet Cost Assistant",
+        "MarIO",
         "Search SGCarmart's EV listings and build a fleet cost workbook — in one conversation.",
         mascot_path=MASCOT_CHATBOT_PATH,
     )
