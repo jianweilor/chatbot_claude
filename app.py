@@ -780,7 +780,7 @@ def main() -> None:
     ui_theme.inject_global_css()
     ui_theme.render_hero(
         "MarIO",
-        " * Your onestop orchestrator to search online SG car listings and build a market survery workbook - one chat solution. * ",
+        " *Your onestop orchestrator to search online SG car listings and build a market survery workbook - one chat solution*.",
         mascot_path=MASCOT_CHATBOT_PATH,
     )
 
