@@ -86,10 +86,10 @@ def user_say(text: str) -> None:
 def step1_greeting() -> str:
     return (
         "👋 Hi, I'm MarIO, your Market Intelligent Orchestrator.\n\n"
-        "Would you like me to scrape fresh EV listing data from SGCarmart before "
-        "we continue? This runs the full pipeline (URL collection → spec scraping "
-        "→ pricing scraping → combine into one CSV) and can take a while.\n\n"
-        "Reply **Yes** to refresh, or **No** to use the existing data."
+        "Would you like me to start a market scouting agent to retrieve fresh EV listing from websources before "
+        "we continue? This starts the full pipeline and generate a full data repository "
+        " and this can take a while.\n\n"
+        "Reply **'Yes'** to continue, or **'No'** to proceed with our existing database."
     )
 
 
@@ -781,7 +781,7 @@ def main() -> None:
     ui_theme.inject_global_css()
     ui_theme.render_hero(
         "MarIO",
-        "Search SGCarmart's EV listings and build a fleet cost workbook — in one conversation.",
+        "Your one stop, orchestrator to search online EV listings and build a market survery workbook - in one chat.",
         mascot_path=MASCOT_CHATBOT_PATH,
     )
 
