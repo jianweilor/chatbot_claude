@@ -96,7 +96,7 @@ def step1_greeting() -> str:
 def step2_greeting() -> str:
     return (
         "What are the requirements for your vehicle(s)? "
-        "You can describe your needs (e.g. *'SUV with at least 7 seats'*, *'sedans that do 0-100 in under 8 seconds'*)"
+        "You can describe your needs (e.g. *'SUV with at least 7 seats'*, *'sedans that do 0-100 in under 8 seconds'* )"
         "and on our **Recommender Agent** will assist you!"
     )
 
@@ -780,7 +780,7 @@ def main() -> None:
     ui_theme.inject_global_css()
     ui_theme.render_hero(
         "MarIO",
-        "*Your onestop orchestrator to search online SG car listings and build a market survery workbook - one chat solution.*",
+        " * Your onestop orchestrator to search online SG car listings and build a market survery workbook - one chat solution. * ",
         mascot_path=MASCOT_CHATBOT_PATH,
     )
 
